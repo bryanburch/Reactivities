@@ -1,5 +1,3 @@
-using System.Net.NetworkInformation;
-
 namespace Application.Core
 {
     public class Result<T>
