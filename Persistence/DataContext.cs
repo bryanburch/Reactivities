@@ -12,20 +12,21 @@ namespace Persistence
 
         public DbSet<Activity> Activities { get; set; }
         public DbSet<ActivityAttendee> ActivityAttendees { get; set; }
+        public DbSet<Photo> Photos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
             // configure composite key
-            builder.Entity<ActivityAttendee>(x => x.HasKey(aa => new {aa.AppUserId, aa.ActivityId}));
+            builder.Entity<ActivityAttendee>(x => x.HasKey(aa => new { aa.AppUserId, aa.ActivityId }));
 
             // configure User-to-many-Activity relation
             builder.Entity<ActivityAttendee>()
                 .HasOne(u => u.AppUser)
                 .WithMany(a => a.Activities)
                 .HasForeignKey(aa => aa.AppUserId);
-            
+
             // configure Activity-to-many-User relation
             builder.Entity<ActivityAttendee>()
                 .HasOne(u => u.Activity)
