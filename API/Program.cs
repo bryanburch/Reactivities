@@ -1,4 +1,3 @@
-using System.Net;
 using API.Extensions;
 using API.Middleware;
 using Domain;
