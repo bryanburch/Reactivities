@@ -11,7 +11,7 @@ const MyDateInput = (props: Partial<DatePickerProps>) => {
         <Form.Field error={meta.touched && !!meta.error}>
             <DatePicker 
                 {...field}
-                {...props}
+                {...(props as any)}
                 selected={(field.value && new Date(field.value)) || null}
                 onChange={value => helpers.setValue(value)}
             />

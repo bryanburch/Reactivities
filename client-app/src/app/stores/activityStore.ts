@@ -39,7 +39,7 @@ export default class ActivityStore {
     setPredicate = (predicate: string, value: string | Date) => {
         // Only allowing one filter to be active at a time (besides date)
         const resetPredicate = () => {
-            this.predicate.forEach((value, key) => {
+            this.predicate.forEach((_, key) => {
                 if (key !== 'startDate') this.predicate.delete(key);
             })
         }
